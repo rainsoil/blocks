@@ -1,0 +1,9 @@
+server:
+  port: -1
+blocks:
+  log:
+    enable: true
+    print: true
+logging:
+  level:
+    com.blocks.common.data.log: debug
