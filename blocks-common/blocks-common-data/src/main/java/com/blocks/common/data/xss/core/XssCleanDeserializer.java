@@ -9,6 +9,7 @@ import java.io.IOException;
 
 /**
  * jackson xss 处理
+ *
  * @author luyanan
  * @since 2022/7/4
  **/
@@ -19,12 +20,12 @@ public class XssCleanDeserializer extends XssCleanDeserializerBase {
     public String clean(String text) throws IOException {
         // 读取 xss 配置
         XssProperties properties = SpringContextHolder.getBean(XssProperties.class);
-        if (properties == null) {
+        if (null == properties) {
             return text;
         }
         // 读取 XssCleaner bean
         XssCleaner xssCleaner = SpringContextHolder.getBean(XssCleaner.class);
-        if (xssCleaner == null) {
+        if (null == xssCleaner) {
             return XssUtil.trim(text, properties.isTrimText());
         }
         String value = xssCleaner.clean(XssUtil.trim(text, properties.isTrimText()));

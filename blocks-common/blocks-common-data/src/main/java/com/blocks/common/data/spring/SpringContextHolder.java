@@ -134,13 +134,11 @@ public class SpringContextHolder extends WebUtils implements ApplicationContextA
      * @since 2021/1/23
      */
     public static HttpServletRequest getRequest() {
-        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-        if (null == requestAttributes) {
-            return null;
-        }
-        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes)
-                .getRequest();
-        return null == request ? null : request;
+        return Opt
+                .of(RequestContextHolder.getRequestAttributes())
+                .map(a -> (ServletRequestAttributes) a)
+                .map(a -> a.getRequest())
+                .orElseGet(null);
     }
 
     /**

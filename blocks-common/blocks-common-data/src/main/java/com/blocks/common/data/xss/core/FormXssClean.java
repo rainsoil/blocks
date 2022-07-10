@@ -21,7 +21,7 @@ import java.beans.PropertyEditorSupport;
         prefix = XssProperties.PREFIX,
         name = "enabled",
         havingValue = "true",
-        matchIfMissing = true
+        matchIfMissing = false
 )
 @RequiredArgsConstructor
 public class FormXssClean {

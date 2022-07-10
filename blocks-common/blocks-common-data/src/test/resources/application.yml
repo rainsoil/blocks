@@ -7,3 +7,6 @@ blocks:
 logging:
   level:
     com.blocks.common.data.log: debug
+spring:
+  cache:
+    type: caffeine

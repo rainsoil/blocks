@@ -234,13 +234,15 @@
     </dependencyManagement>
 
     <modules>
+        <module>blocks-common</module>
+        <module>blocks-core</module>
         <module>blocks-old-admin</module>
         <module>blocks-old-framework</module>
         <module>blocks-old-system</module>
         <module>blocks-old-quartz</module>
         <module>blocks-old-generator</module>
         <module>blocks-old-common</module>
-        <module>blocks-common</module>
+
     </modules>
     <packaging>pom</packaging>
 
