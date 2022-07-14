@@ -29,4 +29,5 @@
 
 
 
-0
+## 分布式id
+> 雪花漂移算法 https://github.com/yitter/IdGenerator
