@@ -17,6 +17,13 @@
 
     <dependencies>
 
+
+        <dependency>
+            <groupId>com.blocks.system</groupId>
+            <artifactId>blocks-system</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- 通用工具-->
         <dependency>
             <groupId>com.blocks.old</groupId>

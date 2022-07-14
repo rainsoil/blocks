@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.Ztree;
 import com.blocks.old.common.core.domain.entity.SysDictType;
 import com.blocks.old.common.core.page.TableDataInfo;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.utils.poi.ExcelUtil;
 import com.blocks.old.system.service.ISysDictTypeService;
 
@@ -53,7 +51,6 @@ public class SysDictTypeController extends BaseController
         return getDataTable(list);
     }
 
-    @Log(title = "字典类型", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:dict:export")
     @PostMapping("/export")
     @ResponseBody
@@ -77,7 +74,6 @@ public class SysDictTypeController extends BaseController
     /**
      * 新增保存字典类型
      */
-    @Log(title = "字典类型", businessType = BusinessType.INSERT)
     @RequiresPermissions("system:dict:add")
     @PostMapping("/add")
     @ResponseBody
@@ -105,7 +101,6 @@ public class SysDictTypeController extends BaseController
     /**
      * 修改保存字典类型
      */
-    @Log(title = "字典类型", businessType = BusinessType.UPDATE)
     @RequiresPermissions("system:dict:edit")
     @PostMapping("/edit")
     @ResponseBody
@@ -119,7 +114,6 @@ public class SysDictTypeController extends BaseController
         return toAjax(dictTypeService.updateDictType(dict));
     }
 
-    @Log(title = "字典类型", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:dict:remove")
     @PostMapping("/remove")
     @ResponseBody
@@ -133,7 +127,6 @@ public class SysDictTypeController extends BaseController
      * 刷新字典缓存
      */
     @RequiresPermissions("system:dict:remove")
-    @Log(title = "字典类型", businessType = BusinessType.CLEAN)
     @GetMapping("/refreshCache")
     @ResponseBody
     public AjaxResult refreshCache()

@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.Ztree;
 import com.blocks.old.common.core.domain.entity.SysMenu;
 import com.blocks.old.common.core.domain.entity.SysRole;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.utils.ShiroUtils;
 import com.blocks.old.framework.shiro.util.AuthorizationUtils;
 import com.blocks.old.system.service.ISysMenuService;
@@ -57,7 +55,6 @@ public class SysMenuController extends BaseController
     /**
      * 删除菜单
      */
-    @Log(title = "菜单管理", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:menu:remove")
     @GetMapping("/remove/{menuId}")
     @ResponseBody
@@ -99,7 +96,6 @@ public class SysMenuController extends BaseController
     /**
      * 新增保存菜单
      */
-    @Log(title = "菜单管理", businessType = BusinessType.INSERT)
     @RequiresPermissions("system:menu:add")
     @PostMapping("/add")
     @ResponseBody
@@ -128,7 +124,6 @@ public class SysMenuController extends BaseController
     /**
      * 修改保存菜单
      */
-    @Log(title = "菜单管理", businessType = BusinessType.UPDATE)
     @RequiresPermissions("system:menu:edit")
     @PostMapping("/edit")
     @ResponseBody

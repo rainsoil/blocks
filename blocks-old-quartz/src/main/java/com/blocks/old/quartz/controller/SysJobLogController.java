@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.utils.StringUtils;
 import com.blocks.old.common.utils.poi.ExcelUtil;
 import com.blocks.old.quartz.domain.SysJob;
@@ -62,7 +60,6 @@ public class SysJobLogController extends BaseController
         return getDataTable(list);
     }
 
-    @Log(title = "调度日志", businessType = BusinessType.EXPORT)
     @RequiresPermissions("monitor:job:export")
     @PostMapping("/export")
     @ResponseBody
@@ -73,7 +70,6 @@ public class SysJobLogController extends BaseController
         return util.exportExcel(list, "调度日志");
     }
 
-    @Log(title = "调度日志", businessType = BusinessType.DELETE)
     @RequiresPermissions("monitor:job:remove")
     @PostMapping("/remove")
     @ResponseBody
@@ -91,7 +87,6 @@ public class SysJobLogController extends BaseController
         return prefix + "/detail";
     }
 
-    @Log(title = "调度日志", businessType = BusinessType.CLEAN)
     @RequiresPermissions("monitor:job:remove")
     @PostMapping("/clean")
     @ResponseBody

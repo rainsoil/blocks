@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.common.core.text.Convert;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.enums.OnlineStatus;
 import com.blocks.old.common.utils.ShiroUtils;
 import com.blocks.old.framework.shiro.session.OnlineSession;
@@ -57,7 +55,6 @@ public class SysUserOnlineController extends BaseController
     }
 
     @RequiresPermissions(value = { "monitor:online:batchForceLogout", "monitor:online:forceLogout" }, logical = Logical.OR)
-    @Log(title = "在线用户", businessType = BusinessType.FORCE)
     @PostMapping("/batchForceLogout")
     @ResponseBody
     public AjaxResult batchForceLogout(String ids)

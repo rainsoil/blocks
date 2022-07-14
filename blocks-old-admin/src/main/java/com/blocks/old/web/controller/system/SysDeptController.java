@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.Ztree;
 import com.blocks.old.common.core.domain.entity.SysDept;
 import com.blocks.old.common.core.domain.entity.SysRole;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.utils.StringUtils;
 import com.blocks.old.system.service.ISysDeptService;
 
@@ -69,7 +67,6 @@ public class SysDeptController extends BaseController
     /**
      * 新增保存部门
      */
-    @Log(title = "部门管理", businessType = BusinessType.INSERT)
     @RequiresPermissions("system:dept:add")
     @PostMapping("/add")
     @ResponseBody
@@ -103,7 +100,6 @@ public class SysDeptController extends BaseController
     /**
      * 修改保存部门
      */
-    @Log(title = "部门管理", businessType = BusinessType.UPDATE)
     @RequiresPermissions("system:dept:edit")
     @PostMapping("/edit")
     @ResponseBody
@@ -130,7 +126,6 @@ public class SysDeptController extends BaseController
     /**
      * 删除
      */
-    @Log(title = "部门管理", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:dept:remove")
     @GetMapping("/remove/{deptId}")
     @ResponseBody

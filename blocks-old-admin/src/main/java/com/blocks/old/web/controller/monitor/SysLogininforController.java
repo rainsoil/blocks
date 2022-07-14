@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.utils.poi.ExcelUtil;
 import com.blocks.old.system.domain.SysLogininfor;
 import com.blocks.old.system.service.ISysLogininforService;
@@ -52,7 +50,6 @@ public class SysLogininforController extends BaseController
         return getDataTable(list);
     }
 
-    @Log(title = "登录日志", businessType = BusinessType.EXPORT)
     @RequiresPermissions("monitor:logininfor:export")
     @PostMapping("/export")
     @ResponseBody
@@ -64,7 +61,6 @@ public class SysLogininforController extends BaseController
     }
 
     @RequiresPermissions("monitor:logininfor:remove")
-    @Log(title = "登录日志", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
@@ -73,7 +69,6 @@ public class SysLogininforController extends BaseController
     }
     
     @RequiresPermissions("monitor:logininfor:remove")
-    @Log(title = "登录日志", businessType = BusinessType.CLEAN)
     @PostMapping("/clean")
     @ResponseBody
     public AjaxResult clean()
@@ -83,7 +78,6 @@ public class SysLogininforController extends BaseController
     }
 
     @RequiresPermissions("monitor:logininfor:unlock")
-    @Log(title = "账户解锁", businessType = BusinessType.OTHER)
     @PostMapping("/unlock")
     @ResponseBody
     public AjaxResult unlock(String loginName)

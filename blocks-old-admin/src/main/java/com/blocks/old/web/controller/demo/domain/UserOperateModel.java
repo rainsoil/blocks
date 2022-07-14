@@ -1,6 +1,8 @@
 package com.blocks.old.web.controller.demo.domain;
 
 import java.util.Date;
+
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.blocks.old.common.annotation.Excel;
 import com.blocks.old.common.annotation.Excel.Type;
 import com.blocks.old.common.core.domain.BaseEntity;
@@ -21,6 +23,7 @@ public class UserOperateModel extends BaseEntity
     @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
     private String userSex;
 
+    @ExcelProperty(value = "" )
     @Excel(name = "用户手机")
     private String userPhone;
 

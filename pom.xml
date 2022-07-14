@@ -33,6 +33,15 @@
         <velocity.version>2.3</velocity.version>
     </properties>
 
+
+    <dependencies>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
+    </dependencies>
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
@@ -236,6 +245,7 @@
     <modules>
         <module>blocks-common</module>
         <module>blocks-core</module>
+        <module>blocks-system</module>
         <module>blocks-old-admin</module>
         <module>blocks-old-framework</module>
         <module>blocks-old-system</module>
@@ -243,13 +253,10 @@
         <module>blocks-old-generator</module>
         <module>blocks-old-common</module>
 
+
     </modules>
     <packaging>pom</packaging>
 
-
-    <dependencies>
-
-    </dependencies>
 
     <build>
         <plugins>

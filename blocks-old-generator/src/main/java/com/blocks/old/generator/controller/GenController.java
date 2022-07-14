@@ -22,13 +22,11 @@ import com.alibaba.druid.sql.SQLUtils;
 import com.alibaba.druid.sql.ast.SQLStatement;
 import com.alibaba.druid.sql.dialect.mysql.ast.statement.MySqlCreateTableStatement;
 import com.alibaba.fastjson.JSON;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.CxSelect;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.common.core.text.Convert;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.utils.StringUtils;
 import com.blocks.old.common.utils.security.PermissionUtils;
 import com.blocks.old.common.utils.sql.SqlUtil;
@@ -125,7 +123,6 @@ public class GenController extends BaseController
      * 导入表结构（保存）
      */
     @RequiresPermissions("tool:gen:list")
-    @Log(title = "代码生成", businessType = BusinessType.IMPORT)
     @PostMapping("/importTable")
     @ResponseBody
     public AjaxResult importTableSave(String tables)
@@ -171,7 +168,6 @@ public class GenController extends BaseController
      * 修改保存代码生成业务
      */
     @RequiresPermissions("tool:gen:edit")
-    @Log(title = "代码生成", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated GenTable genTable)
@@ -182,7 +178,6 @@ public class GenController extends BaseController
     }
 
     @RequiresPermissions("tool:gen:remove")
-    @Log(title = "代码生成", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
@@ -192,7 +187,6 @@ public class GenController extends BaseController
     }
 
     @RequiresRoles("admin")
-    @Log(title = "创建表", businessType = BusinessType.OTHER)
     @PostMapping("/createTable")
     @ResponseBody
     public AjaxResult create(String sql)
@@ -242,7 +236,6 @@ public class GenController extends BaseController
      * 生成代码（下载方式）
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
     @GetMapping("/download/{tableName}")
     public void download(HttpServletResponse response, @PathVariable("tableName") String tableName) throws IOException
     {
@@ -254,7 +247,6 @@ public class GenController extends BaseController
      * 生成代码（自定义路径）
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
     @GetMapping("/genCode/{tableName}")
     @ResponseBody
     public AjaxResult genCode(@PathVariable("tableName") String tableName)
@@ -267,7 +259,6 @@ public class GenController extends BaseController
      * 同步数据库
      */
     @RequiresPermissions("tool:gen:edit")
-    @Log(title = "代码生成", businessType = BusinessType.UPDATE)
     @GetMapping("/synchDb/{tableName}")
     @ResponseBody
     public AjaxResult synchDb(@PathVariable("tableName") String tableName)
@@ -280,7 +271,6 @@ public class GenController extends BaseController
      * 批量生成代码
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
     @GetMapping("/batchGenCode")
     @ResponseBody
     public void batchGenCode(HttpServletResponse response, String tables) throws IOException

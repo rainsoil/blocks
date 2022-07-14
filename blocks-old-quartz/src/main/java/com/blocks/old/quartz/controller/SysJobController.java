@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.constant.Constants;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.exception.job.TaskException;
 import com.blocks.old.common.utils.StringUtils;
 import com.blocks.old.common.utils.poi.ExcelUtil;
@@ -58,7 +56,6 @@ public class SysJobController extends BaseController
         return getDataTable(list);
     }
 
-    @Log(title = "定时任务", businessType = BusinessType.EXPORT)
     @RequiresPermissions("monitor:job:export")
     @PostMapping("/export")
     @ResponseBody
@@ -69,7 +66,6 @@ public class SysJobController extends BaseController
         return util.exportExcel(list, "定时任务");
     }
 
-    @Log(title = "定时任务", businessType = BusinessType.DELETE)
     @RequiresPermissions("monitor:job:remove")
     @PostMapping("/remove")
     @ResponseBody
@@ -91,7 +87,6 @@ public class SysJobController extends BaseController
     /**
      * 任务调度状态修改
      */
-    @Log(title = "定时任务", businessType = BusinessType.UPDATE)
     @RequiresPermissions("monitor:job:changeStatus")
     @PostMapping("/changeStatus")
     @ResponseBody
@@ -105,7 +100,6 @@ public class SysJobController extends BaseController
     /**
      * 任务调度立即执行一次
      */
-    @Log(title = "定时任务", businessType = BusinessType.UPDATE)
     @RequiresPermissions("monitor:job:changeStatus")
     @PostMapping("/run")
     @ResponseBody
@@ -127,7 +121,6 @@ public class SysJobController extends BaseController
     /**
      * 新增保存调度
      */
-    @Log(title = "定时任务", businessType = BusinessType.INSERT)
     @RequiresPermissions("monitor:job:add")
     @PostMapping("/add")
     @ResponseBody
@@ -175,7 +168,6 @@ public class SysJobController extends BaseController
     /**
      * 修改保存调度
      */
-    @Log(title = "定时任务", businessType = BusinessType.UPDATE)
     @RequiresPermissions("monitor:job:edit")
     @PostMapping("/edit")
     @ResponseBody

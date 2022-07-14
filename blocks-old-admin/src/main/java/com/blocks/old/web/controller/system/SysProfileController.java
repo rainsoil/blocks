@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import com.blocks.old.common.annotation.Log;
 import com.blocks.old.common.config.RuoYiConfig;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
 import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.entity.SysUser;
-import com.blocks.old.common.enums.BusinessType;
 import com.blocks.old.common.utils.DateUtils;
 import com.blocks.old.common.utils.ShiroUtils;
 import com.blocks.old.common.utils.StringUtils;
@@ -78,7 +76,6 @@ public class SysProfileController extends BaseController
         return prefix + "/resetPwd";
     }
 
-    @Log(title = "重置密码", businessType = BusinessType.UPDATE)
     @PostMapping("/resetPwd")
     @ResponseBody
     public AjaxResult resetPwd(String oldPassword, String newPassword)
@@ -128,7 +125,6 @@ public class SysProfileController extends BaseController
     /**
      * 修改用户
      */
-    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PostMapping("/update")
     @ResponseBody
     public AjaxResult update(SysUser user)
@@ -159,7 +155,6 @@ public class SysProfileController extends BaseController
     /**
      * 保存头像
      */
-    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PostMapping("/updateAvatar")
     @ResponseBody
     public AjaxResult updateAvatar(@RequestParam("avatarfile") MultipartFile file)

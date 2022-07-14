@@ -3,15 +3,12 @@ package ${packageName}.controller;
 import java.util.List;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.blocks.old.common.annotation.Log;
-import com.blocks.old.common.enums.BusinessType;
 import ${packageName}.domain.${ClassName};
 import ${packageName}.service.I${ClassName}Service;
 import com.blocks.old.common.core.controller.BaseController;
@@ -77,7 +74,6 @@ public class ${ClassName}Controller extends BaseController
      * 导出${functionName}列表
      */
     @RequiresPermissions("${permissionPrefix}:export")
-    @Log(title = "${functionName}", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
     public AjaxResult export(${ClassName} ${className})
@@ -115,7 +111,6 @@ public class ${ClassName}Controller extends BaseController
      * 新增保存${functionName}
      */
     @RequiresPermissions("${permissionPrefix}:add")
-    @Log(title = "${functionName}", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(${ClassName} ${className})
@@ -139,7 +134,6 @@ public class ${ClassName}Controller extends BaseController
      * 修改保存${functionName}
      */
     @RequiresPermissions("${permissionPrefix}:edit")
-    @Log(title = "${functionName}", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(${ClassName} ${className})
@@ -152,7 +146,6 @@ public class ${ClassName}Controller extends BaseController
      * 删除${functionName}
      */
     @RequiresPermissions("${permissionPrefix}:remove")
-    @Log(title = "${functionName}", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
@@ -164,7 +157,6 @@ public class ${ClassName}Controller extends BaseController
      * 删除
      */
     @RequiresPermissions("${permissionPrefix}:remove")
-    @Log(title = "${functionName}", businessType = BusinessType.DELETE)
     @GetMapping("/remove/{${pkColumn.javaField}}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField})

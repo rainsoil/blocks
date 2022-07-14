@@ -13,4 +13,12 @@
     <artifactId>blocks-core</artifactId>
 
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.blocks.common.data</groupId>
+            <artifactId>blocks-common-data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
