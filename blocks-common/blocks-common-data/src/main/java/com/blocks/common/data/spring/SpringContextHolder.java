@@ -82,7 +82,7 @@ public class SpringContextHolder extends WebUtils implements ApplicationContextA
      */
     @SuppressWarnings("unchecked")
     public static <T> T getBean(String name) {
-        return (T) APPLICATION_CONTEXT.getBean(name);
+        return Opt.ofNullable(APPLICATION_CONTEXT).map(a -> (T) a.getBean(name)).orElseGet(() -> null);
     }
 
     /**
@@ -94,7 +94,7 @@ public class SpringContextHolder extends WebUtils implements ApplicationContextA
      * @since 2022/7/5
      */
     public static <T> T getBean(Class<T> requiredType) {
-        return APPLICATION_CONTEXT.getBean(requiredType);
+        return Opt.ofNullable(APPLICATION_CONTEXT).map(a -> (T) a.getBean(requiredType)).orElseGet(() -> null);
     }
 
     /**
@@ -148,7 +148,7 @@ public class SpringContextHolder extends WebUtils implements ApplicationContextA
      * @since 2021/1/23
      */
     public static HttpServletResponse getResponse() {
-        return Opt.of(RequestContextHolder.getRequestAttributes()).map(r -> (ServletRequestAttributes) r).map(a -> a.getResponse()).orElse(null);
+        return Opt.ofNullable(RequestContextHolder.getRequestAttributes()).map(r -> (ServletRequestAttributes) r).map(a -> a.getResponse()).orElse(null);
     }
 
     /**
@@ -196,7 +196,7 @@ public class SpringContextHolder extends WebUtils implements ApplicationContextA
      */
     @SneakyThrows
     public static HandlerMethod getHandlerMethod(HttpServletRequest request) {
-        return (HandlerMethod) Opt.of(APPLICATION_CONTEXT.getBean(RequestMappingHandlerMapping.class))
+        return (HandlerMethod) Opt.ofNullable(APPLICATION_CONTEXT.getBean(RequestMappingHandlerMapping.class))
                 .map(re -> {
                     try {
                         return re.getHandler(request).getHandler();

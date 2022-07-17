@@ -1,42 +1,46 @@
 package com.blocks.old.web.controller.demo.domain;
 
-import java.util.Date;
-
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.blocks.old.common.annotation.Excel;
-import com.blocks.old.common.annotation.Excel.Type;
+import com.alibaba.excel.annotation.format.DateTimeFormat;
+import com.blocks.common.data.easyexcel.annotation.DictStrFormat;
+import com.blocks.common.data.easyexcel.conver.DictStrFormatConverter;
 import com.blocks.old.common.core.domain.BaseEntity;
 import com.blocks.old.common.utils.DateUtils;
 
+import java.util.Date;
+@ExcelIgnoreUnannotated
 public class UserOperateModel extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     private int userId;
 
-    @Excel(name = "用户编号")
+    @ExcelProperty(value = "用户编号")
     private String userCode;
 
-    @Excel(name = "用户姓名")
+    @ExcelProperty(value = "用户姓名")
     private String userName;
 
-    @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
+    @DictStrFormat(value = "0=男,1=女,2=未知" )
+    @ExcelProperty(value = "用户性别",converter = DictStrFormatConverter.class)
     private String userSex;
 
-    @ExcelProperty(value = "" )
-    @Excel(name = "用户手机")
+    @ExcelProperty(value = "用户手机")
     private String userPhone;
 
-    @Excel(name = "用户邮箱")
+    @ExcelProperty(value = "用户邮箱")
     private String userEmail;
 
-    @Excel(name = "用户余额")
+    @ExcelProperty(value = "用户余额")
     private double userBalance;
 
-    @Excel(name = "用户状态", readConverterExp = "0=正常,1=停用")
+    @DictStrFormat(value = "0=正常,1=停用")
+    @ExcelProperty(value = "用户状态",converter = DictStrFormatConverter.class)
     private String status;
 
-    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
+    @DateTimeFormat(value = "yyyy-MM-dd HH:mm:ss")
+    @ExcelProperty(value = "创建时间")
     private Date createTime;
 
     public UserOperateModel()

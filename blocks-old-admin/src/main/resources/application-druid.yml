@@ -4,18 +4,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
     druid:
-      # 主库数据源
-      master:
-        url: jdbc:mysql://39.99.137.69:3306/blocks?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-        username: blocks
-        password: GGmMN*(c5nNVoZ9
-      # 从库数据源
-      slave:
-        # 从数据源开关/默认关闭
-        enabled: false
-        url:
-        username:
-        password:
+      url: jdbc:mysql://39.99.137.69:3306/blocks?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      username: blocks
+      password: GGmMN*(c5nNVoZ9
       # 初始连接数
       initialSize: 5
       # 最小连接池数量
@@ -55,6 +46,7 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+
 
 
 # MyBatis Plus配置

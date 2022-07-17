@@ -1,12 +1,12 @@
 package com.blocks.old.web.controller.system;
 
+import com.blocks.common.data.page.AjaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.entity.SysUser;
 import com.blocks.old.common.utils.StringUtils;
 import com.blocks.old.framework.shiro.service.SysRegisterService;
@@ -14,12 +14,11 @@ import com.blocks.old.system.service.ISysConfigService;
 
 /**
  * 注册验证
- * 
+ *
  * @author ruoyi
  */
 @Controller
-public class SysRegisterController extends BaseController
-{
+public class SysRegisterController extends BaseController {
     @Autowired
     private SysRegisterService registerService;
 
@@ -27,17 +26,14 @@ public class SysRegisterController extends BaseController
     private ISysConfigService configService;
 
     @GetMapping("/register")
-    public String register()
-    {
+    public String register() {
         return "register";
     }
 
     @PostMapping("/register")
     @ResponseBody
-    public AjaxResult ajaxRegister(SysUser user)
-    {
-        if (!("true".equals(configService.selectConfigByKey("sys.account.registerUser"))))
-        {
+    public AjaxResult ajaxRegister(SysUser user) {
+        if (!("true".equals(configService.selectConfigByKey("sys.account.registerUser")))) {
             return error("当前系统没有开启注册功能！");
         }
         String msg = registerService.register(user);

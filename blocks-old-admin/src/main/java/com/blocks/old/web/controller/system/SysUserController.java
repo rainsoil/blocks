@@ -2,6 +2,8 @@ package com.blocks.old.web.controller.system;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.entity.SysRole;
 import com.blocks.old.common.core.domain.entity.SysUser;
 import com.blocks.old.common.core.page.TableDataInfo;
@@ -77,7 +78,7 @@ public class SysUserController extends BaseController
     {
         List<SysUser> list = userService.selectUserList(user);
         ExcelUtil<SysUser> util = new ExcelUtil<SysUser>(SysUser.class);
-        return util.exportExcel(list, "用户数据");
+        return util.exportEasyExcel(list, "用户数据");
     }
 
     @RequiresPermissions("system:user:import")
@@ -86,7 +87,7 @@ public class SysUserController extends BaseController
     public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
     {
         ExcelUtil<SysUser> util = new ExcelUtil<SysUser>(SysUser.class);
-        List<SysUser> userList = util.importExcel(file.getInputStream());
+        List<SysUser> userList = util.importEasyExcel(file.getInputStream());
         String message = userService.importUser(userList, updateSupport, getLoginName());
         return AjaxResult.success(message);
     }

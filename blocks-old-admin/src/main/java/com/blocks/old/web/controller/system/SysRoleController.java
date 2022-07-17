@@ -1,6 +1,8 @@
 package com.blocks.old.web.controller.system;
 
 import java.util.List;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.entity.SysRole;
 import com.blocks.old.common.core.domain.entity.SysUser;
 import com.blocks.old.common.core.page.TableDataInfo;
@@ -64,7 +65,7 @@ public class SysRoleController extends BaseController
     {
         List<SysRole> list = roleService.selectRoleList(role);
         ExcelUtil<SysRole> util = new ExcelUtil<SysRole>(SysRole.class);
-        return util.exportExcel(list, "角色数据");
+        return util.exportEasyExcel(list, "角色数据");
     }
 
     /**

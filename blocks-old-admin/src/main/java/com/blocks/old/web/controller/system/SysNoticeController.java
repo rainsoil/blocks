@@ -1,6 +1,8 @@
 package com.blocks.old.web.controller.system;
 
 import java.util.List;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.system.domain.SysNotice;
 import com.blocks.old.system.service.ISysNoticeService;

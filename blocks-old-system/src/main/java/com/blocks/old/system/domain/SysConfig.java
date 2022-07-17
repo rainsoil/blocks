@@ -1,39 +1,45 @@
 package com.blocks.old.system.domain;
 
-import javax.validation.constraints.*;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.blocks.common.data.easyexcel.annotation.DictStrFormat;
+import com.blocks.common.data.easyexcel.conver.DictStrFormatConverter;
+import com.blocks.old.common.core.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.blocks.old.common.annotation.Excel;
-import com.blocks.old.common.annotation.Excel.ColumnType;
-import com.blocks.old.common.core.domain.BaseEntity;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * 参数配置表 sys_config
  * 
  * @author ruoyi
  */
+@ExcelIgnoreUnannotated
 public class SysConfig extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 参数主键 */
-    @Excel(name = "参数主键", cellType = ColumnType.NUMERIC)
+    @ExcelProperty(value = "参数主键")
     private Long configId;
 
     /** 参数名称 */
-    @Excel(name = "参数名称")
+    @ExcelProperty(value = "参数名称")
     private String configName;
 
     /** 参数键名 */
-    @Excel(name = "参数键名")
+    @ExcelProperty(value = "参数键名")
     private String configKey;
 
     /** 参数键值 */
-    @Excel(name = "参数键值")
+    @ExcelProperty(value = "参数键值")
     private String configValue;
 
     /** 系统内置（Y是 N否） */
-    @Excel(name = "系统内置", readConverterExp = "Y=是,N=否")
+    @DictStrFormat(value = "Y=是,N=否")
+    @ExcelProperty(value = "系统内置",converter = DictStrFormatConverter.class)
     private String configType;
 
     public Long getConfigId()

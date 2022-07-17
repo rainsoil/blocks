@@ -1,4 +1,4 @@
-package com.blocks.old.common.annotation;
+package com.blocks.common.data.repeatsubmit.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -2,6 +2,8 @@ package com.blocks.old.web.controller.system;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.text.Convert;
 import com.blocks.old.common.utils.ServletUtils;
 import com.blocks.old.common.utils.StringUtils;

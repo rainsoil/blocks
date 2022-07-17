@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
     com.blocks.common.data.log.config.LogAutoConfiguration,\
   com.blocks.common.data.xss.config.XssAutoConfiguration,\
-  com.blocks.common.data.mybatisplus.MybatisPlusConfig
+  com.blocks.common.data.mybatisplus.MybatisPlusConfig,\
+  com.blocks.common.data.repeatsubmit.RepeatSubmitConfiguration

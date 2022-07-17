@@ -1,6 +1,8 @@
 package com.blocks.old.web.controller.system;
 
 import java.util.List;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.Ztree;
 import com.blocks.old.common.core.domain.entity.SysDictType;
 import com.blocks.old.common.core.page.TableDataInfo;
@@ -59,7 +60,7 @@ public class SysDictTypeController extends BaseController
 
         List<SysDictType> list = dictTypeService.selectDictTypeList(dictType);
         ExcelUtil<SysDictType> util = new ExcelUtil<SysDictType>(SysDictType.class);
-        return util.exportExcel(list, "字典类型");
+        return util.exportEasyExcel(list, "字典类型");
     }
 
     /**

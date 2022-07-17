@@ -24,4 +24,26 @@ public interface IDictEnums {
      * @since 2022/7/14
      */
     String getLabel();
+
+
+    /**
+     * 字典的type
+     *
+     * @return java.lang.Enum<? extends com.blocks.common.data.easyexcel.IDictEnums.IDictTypeEnums>
+     * @since 2022/7/16
+     */
+    Enum<? extends IDictTypeEnums> getType();
+
+
+    /**
+     * 字典type的接口类
+     *
+     * @author luyanan
+     * @since 2022/7/16
+     */
+    static interface IDictTypeEnums {
+
+
+    }
+
 }

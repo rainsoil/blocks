@@ -9,7 +9,7 @@ import lombok.Getter;
  * @since 2022/7/14
  **/
 @Getter
-public enum VoidDictEnums implements IDictEnums {
+public enum VoidDictEnums  {
 
     ;
 

@@ -1,43 +1,50 @@
 package com.blocks.old.common.core.domain.entity;
 
-import javax.validation.constraints.*;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.blocks.common.data.easyexcel.annotation.DictStrFormat;
+import com.blocks.common.data.easyexcel.conver.DictStrFormatConverter;
+import com.blocks.old.common.core.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.blocks.old.common.annotation.Excel;
-import com.blocks.old.common.annotation.Excel.ColumnType;
-import com.blocks.old.common.core.domain.BaseEntity;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * 角色表 sys_role
  * 
  * @author ruoyi
  */
+@ExcelIgnoreUnannotated
 public class SysRole extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 角色ID */
-    @Excel(name = "角色序号", cellType = ColumnType.NUMERIC)
+    @ExcelProperty(value = "角色序号")
     private Long roleId;
 
     /** 角色名称 */
-    @Excel(name = "角色名称")
+    @ExcelProperty(value = "角色名称")
     private String roleName;
 
     /** 角色权限 */
-    @Excel(name = "角色权限")
+    @ExcelProperty(value = "角色权限")
     private String roleKey;
 
     /** 角色排序 */
-    @Excel(name = "角色排序", cellType = ColumnType.NUMERIC)
+    @ExcelProperty(value = "角色排序")
     private String roleSort;
 
     /** 数据范围（1：所有数据权限；2：自定义数据权限；3：本部门数据权限；4：本部门及以下数据权限；5：仅本人数据权限） */
-    @Excel(name = "数据范围", readConverterExp = "1=所有数据权限,2=自定义数据权限,3=本部门数据权限,4=本部门及以下数据权限,5=仅本人数据权限")
+    @DictStrFormat(value = "1=所有数据权限,2=自定义数据权限,3=本部门数据权限,4=本部门及以下数据权限,5=仅本人数据权限")
+    @ExcelProperty(value = "数据范围",converter = DictStrFormatConverter.class)
     private String dataScope;
 
     /** 角色状态（0正常 1停用） */
-    @Excel(name = "角色状态", readConverterExp = "0=正常,1=停用")
+    @DictStrFormat(value = "0=正常,1=停用" )
+    @ExcelProperty(value = "角色状态",converter = DictStrFormatConverter.class)
     private String status;
 
     /** 删除标志（0代表存在 2代表删除） */

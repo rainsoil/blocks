@@ -48,10 +48,10 @@
             autoReplace: true
         }).on('fileuploaded', function (event, data, previewId, index) {
         	var rsp = data.response;
-            log.info("return url：" + rsp.url)
-            log.info("reutrn fileName：" + rsp.fileName)
-            log.info("reutrn newFileName：" + rsp.newFileName)
-            log.info("return originalFilename：" + rsp.originalFilename)
+            log.info("return url：" + rsp.data.url)
+            log.info("reutrn fileName：" + rsp.data.fileName)
+            log.info("reutrn newFileName：" + rsp.data.newFileName)
+            log.info("return originalFilename：" + rsp.data.originalFilename)
         }).on('fileremoved', function (event, id, index) {
             $("input[name='" + event.currentTarget.id + "']").val('')
         })
@@ -62,10 +62,10 @@
             uploadAsync: false
         }).on('filebatchuploadsuccess', function (event, data, previewId, index) {
         	var rsp = data.response;
-        	log.info("return urls：" + rsp.urls)
-            log.info("reutrn fileNames：" + rsp.fileNames)
-            log.info("reutrn newFileNames：" + rsp.newFileNames)
-            log.info("return originalFilenames：" + rsp.originalFilenames)
+        	log.info("return urls：" + rsp.data.urls)
+            log.info("reutrn fileNames：" + rsp.data.fileNames)
+            log.info("reutrn newFileNames：" + rsp.data.newFileNames)
+            log.info("return originalFilenames：" + rsp.data.originalFilenames)
         }).on('fileremoved', function (event, id, index) {
             $("input[name='" + event.currentTarget.id + "']").val('')
         })

@@ -1,6 +1,8 @@
 package com.blocks.old.web.controller.system;
 
 import java.util.List;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.common.utils.poi.ExcelUtil;
 import com.blocks.old.system.domain.SysPost;
@@ -57,7 +58,7 @@ public class SysPostController extends BaseController
     {
         List<SysPost> list = postService.selectPostList(post);
         ExcelUtil<SysPost> util = new ExcelUtil<SysPost>(SysPost.class);
-        return util.exportExcel(list, "岗位数据");
+        return util.exportEasyExcel(list, "岗位数据");
     }
 
     @RequiresPermissions("system:post:remove")

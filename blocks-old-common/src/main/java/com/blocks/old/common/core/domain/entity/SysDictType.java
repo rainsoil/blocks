@@ -1,35 +1,42 @@
 package com.blocks.old.common.core.domain.entity;
 
-import javax.validation.constraints.*;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.blocks.common.data.easyexcel.annotation.DictStrFormat;
+import com.blocks.common.data.easyexcel.conver.DictStrFormatConverter;
+import com.blocks.old.common.core.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.blocks.old.common.annotation.Excel;
-import com.blocks.old.common.annotation.Excel.ColumnType;
-import com.blocks.old.common.core.domain.BaseEntity;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * 字典类型表 sys_dict_type
  * 
  * @author ruoyi
  */
+@ExcelIgnoreUnannotated
 public class SysDictType extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 字典主键 */
-    @Excel(name = "字典主键", cellType = ColumnType.NUMERIC)
+    @ExcelProperty(value = "字典主键")
     private Long dictId;
 
     /** 字典名称 */
-    @Excel(name = "字典名称")
+    @ExcelProperty(value = "字典名称")
     private String dictName;
 
     /** 字典类型 */
-    @Excel(name = "字典类型")
+    @ExcelProperty(value = "字典类型")
     private String dictType;
 
     /** 状态（0正常 1停用） */
-    @Excel(name = "状态", readConverterExp = "0=正常,1=停用")
+    @DictStrFormat(value ="0=正常,1=停用" )
+    @ExcelProperty(value = "状态",converter = DictStrFormatConverter.class)
     private String status;
 
     public Long getDictId()

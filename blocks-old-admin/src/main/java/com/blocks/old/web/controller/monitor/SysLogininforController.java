@@ -1,6 +1,8 @@
 package com.blocks.old.web.controller.monitor;
 
 import java.util.List;
+
+import com.blocks.common.data.page.AjaxResult;
 import com.blocks.old.framework.shiro.service.SysPasswordService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.common.utils.poi.ExcelUtil;
 import com.blocks.old.system.domain.SysLogininfor;
@@ -57,7 +58,7 @@ public class SysLogininforController extends BaseController
     {
         List<SysLogininfor> list = logininforService.selectLogininforList(logininfor);
         ExcelUtil<SysLogininfor> util = new ExcelUtil<SysLogininfor>(SysLogininfor.class);
-        return util.exportExcel(list, "登录日志");
+        return util.exportEasyExcel(list, "登录日志");
     }
 
     @RequiresPermissions("monitor:logininfor:remove")

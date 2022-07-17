@@ -1,21 +1,9 @@
 package com.blocks.old.web.controller.demo.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.blocks.old.common.annotation.Excel;
-import com.blocks.old.common.annotation.Excel.ColumnType;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.blocks.common.data.page.AjaxResult;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.PageDomain;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.common.core.page.TableSupport;
@@ -23,6 +11,15 @@ import com.blocks.old.common.core.text.Convert;
 import com.blocks.old.common.utils.DateUtils;
 import com.blocks.old.common.utils.StringUtils;
 import com.blocks.old.common.utils.poi.ExcelUtil;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.*;
 
 /**
  * 表格相关
@@ -197,7 +194,7 @@ public class DemoTableController extends BaseController
             }
         }
         ExcelUtil<UserTableModel> util = new ExcelUtil<UserTableModel>(UserTableModel.class);
-        return util.exportExcel(userList, "用户数据");
+        return util.exportEasyExcel(userList, "用户数据");
     }
 
     /**
@@ -590,33 +587,33 @@ class UserTableColumn
         this.field = field;
     }
 }
-
+@ExcelIgnoreUnannotated
 class UserTableModel
 {
     /** 用户ID */
     private int userId;
 
     /** 用户编号 */
-    @Excel(name = "用户编号", cellType = ColumnType.NUMERIC)
+    @ExcelProperty(value = "用户编号")
     private String userCode;
 
     /** 用户姓名 */
-    @Excel(name = "用户姓名")
+    @ExcelProperty(value = "用户姓名")
     private String userName;
 
     /** 用户性别 */
     private String userSex;
 
     /** 用户手机 */
-    @Excel(name = "用户手机")
+    @ExcelProperty(value = "用户手机")
     private String userPhone;
 
     /** 用户邮箱 */
-    @Excel(name = "用户邮箱")
+    @ExcelProperty(value = "用户邮箱")
     private String userEmail;
 
     /** 用户余额 */
-    @Excel(name = "用户余额", cellType = ColumnType.NUMERIC)
+    @ExcelProperty(value = "用户余额")
     private double userBalance;
 
     /** 用户状态（0正常 1停用） */

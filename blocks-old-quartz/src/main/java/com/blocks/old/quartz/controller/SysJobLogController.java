@@ -1,6 +1,8 @@
 package com.blocks.old.quartz.controller;
 
 import java.util.List;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.common.utils.StringUtils;
 import com.blocks.old.common.utils.poi.ExcelUtil;
@@ -67,7 +68,7 @@ public class SysJobLogController extends BaseController
     {
         List<SysJobLog> list = jobLogService.selectJobLogList(jobLog);
         ExcelUtil<SysJobLog> util = new ExcelUtil<SysJobLog>(SysJobLog.class);
-        return util.exportExcel(list, "调度日志");
+        return util.exportEasyExcel(list, "调度日志");
     }
 
     @RequiresPermissions("monitor:job:remove")

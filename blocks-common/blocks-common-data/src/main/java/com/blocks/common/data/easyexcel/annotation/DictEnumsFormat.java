@@ -1,6 +1,5 @@
 package com.blocks.common.data.easyexcel.annotation;
 
-import com.blocks.common.data.easyexcel.IDictEnums;
 import com.blocks.common.data.easyexcel.VoidDictEnums;
 
 import java.lang.annotation.ElementType;
@@ -9,14 +8,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 字典值注解
+ * 字典枚举转换
  *
  * @author luyanan
- * @since 2022/7/14
+ * @since 2022/7/16
  **/
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DictFormat {
+public @interface DictEnumsFormat {
 
 
     /**
@@ -25,17 +24,14 @@ public @interface DictFormat {
      * @return java.lang.Class<? extends com.blocks.common.data.easyexcel.IDictEnums>
      * @since 2022/7/14
      */
-    Class<? extends IDictEnums> enumsClass() default VoidDictEnums.class;
+    Class<? extends Enum> enumsClass() default VoidDictEnums.class;
 
 
     /**
-     * 字典的map
-     * <p>
-     * 0=成功,1=失败
-     * </p>
+     * 字典的type
      *
      * @return java.lang.String
-     * @since 2022/7/14
+     * @since 2022/7/16
      */
-    String dictMap() default "";
+    String type() default "";
 }

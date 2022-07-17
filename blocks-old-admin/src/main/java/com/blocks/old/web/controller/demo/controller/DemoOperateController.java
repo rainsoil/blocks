@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.page.PageDomain;
 import com.blocks.old.common.core.page.TableDataInfo;
 import com.blocks.old.common.core.page.TableSupport;
@@ -194,7 +195,7 @@ public class DemoOperateController extends BaseController
     {
         List<UserOperateModel> list = new ArrayList<UserOperateModel>(users.values());
         ExcelUtil<UserOperateModel> util = new ExcelUtil<UserOperateModel>(UserOperateModel.class);
-        return util.exportExcel(list, "用户数据");
+        return util.exportEasyExcel(list, "用户数据");
     }
 
     /**
@@ -216,7 +217,7 @@ public class DemoOperateController extends BaseController
     public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
     {
         ExcelUtil<UserOperateModel> util = new ExcelUtil<UserOperateModel>(UserOperateModel.class);
-        List<UserOperateModel> userList = util.importExcel(file.getInputStream());
+        List<UserOperateModel> userList = util.importEasyExcel(file.getInputStream());
         String message = importUser(userList, updateSupport);
         return AjaxResult.success(message);
     }

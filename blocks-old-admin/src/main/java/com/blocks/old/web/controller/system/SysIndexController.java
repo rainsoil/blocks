@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+
+import com.blocks.common.data.page.AjaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.blocks.old.common.config.RuoYiConfig;
 import com.blocks.old.common.constant.ShiroConstants;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.entity.SysMenu;
 import com.blocks.old.common.core.domain.entity.SysUser;
 import com.blocks.old.common.core.text.Convert;

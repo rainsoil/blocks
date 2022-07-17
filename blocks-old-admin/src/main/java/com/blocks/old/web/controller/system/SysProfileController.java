@@ -1,5 +1,6 @@
 package com.blocks.old.web.controller.system;
 
+import com.blocks.common.data.page.AjaxResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.blocks.old.common.config.RuoYiConfig;
 import com.blocks.old.common.constant.UserConstants;
 import com.blocks.old.common.core.controller.BaseController;
-import com.blocks.old.common.core.domain.AjaxResult;
 import com.blocks.old.common.core.domain.entity.SysUser;
 import com.blocks.old.common.utils.DateUtils;
 import com.blocks.old.common.utils.ShiroUtils;
